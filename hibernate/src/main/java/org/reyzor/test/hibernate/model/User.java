@@ -1,6 +1,8 @@
 package org.reyzor.test.hibernate.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	
 	private long id;
 	

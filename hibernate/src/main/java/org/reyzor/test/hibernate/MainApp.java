@@ -8,7 +8,7 @@ public class MainApp {
 	public static void main(String[] args) {
 
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		System.out.println("1");
+		
 	}
 
 }
