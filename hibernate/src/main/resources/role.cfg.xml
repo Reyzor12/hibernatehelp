@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernat/e Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="org.reyzor.test.hibernate.model.Role" table="role">
 		<id name="id" column="id" type="int">
@@ -7,7 +7,10 @@
 		</id>
 		<property name="title" column="title" type="string"/>
 		
-		<one-to-one name="user" class="org.reyzor.test.hibernate.model.User" />
-					
+		<set name="users" table="user" cascade="delete" >
+			<key column="role_id" />
+			<many-to-many column="user_id" class="org.reyzor.test.hibernate.model.User" />
+		</set>
+							
 	</class> 
 </hibernate-mapping>
