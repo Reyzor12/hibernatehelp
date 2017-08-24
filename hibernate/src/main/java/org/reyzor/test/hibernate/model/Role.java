@@ -9,14 +9,14 @@ public class Role implements Serializable{
 	
 	private String title;
 	
-	private Set<User> users;
+	private User user;
 	
-	public Set<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Role () {

@@ -7,12 +7,7 @@
 		</id>
 		<property name="title" column="title" type="string"/>
 		
-		<set name="users" table="user">
-			<key>
-				<column name="role_id" not-null="true"/>
-			</key>
-			<one-to-many class="org.reyzor.test.hibernate.model.User"/>
-		</set>
-						
+		<one-to-one name="user" class="org.reyzor.test.hibernate.model.User" />
+					
 	</class> 
 </hibernate-mapping>
