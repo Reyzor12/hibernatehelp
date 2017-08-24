@@ -1,6 +1,7 @@
 package org.reyzor.test.hibernate.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class User implements Serializable{
 	
@@ -11,14 +12,14 @@ public class User implements Serializable{
 	private String firstname;
 	private String lastname;
 	
-	private Role role;
-	
-	public Role getRole() {
-		return role;
+	private Set<Role> roles;
+
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	public long getId() {
