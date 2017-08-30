@@ -7,7 +7,7 @@
 		</id>
 		<property name="title" column="title" type="string"/>
 		
-		<set name="users" table="user" cascade="delete" >
+		<set name="users" table="user_role" cascade="delete" >
 			<key column="role_id" />
 			<many-to-many column="user_id" class="org.reyzor.test.hibernate.model.User" />
 		</set>

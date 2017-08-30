@@ -9,7 +9,10 @@
 		<property name="lastname" column="last_name" type="string"/>
 		<property name="age" column="age" type="int"/>
 		
-		<one-to-one name="role" class="org.reyzor.test.hibernate.model.Role"/>
-		
+		<set name="roles" table="user_role">
+			<key column="role_id"/>
+			<many-to-many column="user_id" class="org.reyzor.test.hibernate.model.User"/>
+		</set>
+					
 	</class>
 </hibernate-mapping>
