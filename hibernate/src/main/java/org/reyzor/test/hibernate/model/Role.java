@@ -1,28 +1,19 @@
 package org.reyzor.test.hibernate.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="role")
-public class Role implements Serializable{
+public class Role extends Model {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-	private long id;
-	
+	private static final long serialVersionUID = 4600540122682146725L;
+
 	@Column(name="title", length=50)
 	private String title;
 		
@@ -38,15 +29,7 @@ public class Role implements Serializable{
 	}
 
 	public Role () {
-		
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		super();
 	}
 
 	public String getTitle() {

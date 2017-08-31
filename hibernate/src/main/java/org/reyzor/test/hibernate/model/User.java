@@ -1,31 +1,21 @@
 package org.reyzor.test.hibernate.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
-public class User implements Serializable{
+public class User extends Model {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-	private long id;
-	
+	private static final long serialVersionUID = 875139789364496908L;
+
 	@Column(name="age")
 	private int age;
 	
@@ -48,15 +38,7 @@ public class User implements Serializable{
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	
 	public int getAge() {
 		return age;
 	}
@@ -82,11 +64,11 @@ public class User implements Serializable{
 	}
 
 	public User() {
-		
+		super();
 	}
 	
 	public User(long id) {
-		this.id = id;
+		super(id);
 	}
-
+	
 }
