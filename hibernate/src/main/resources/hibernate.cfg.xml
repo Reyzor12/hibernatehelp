@@ -10,8 +10,8 @@
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property>
 		
-		<mapping resource="role.cfg.xml"/>
-		<mapping resource="user.cfg.xml"/>		
+		<mapping class="org.reyzor.test.hibernate.model.Role"/>
+		<mapping class="org.reyzor.test.hibernate.model.User"/>		
 		
 	</session-factory>
 </hibernate-configuration>
