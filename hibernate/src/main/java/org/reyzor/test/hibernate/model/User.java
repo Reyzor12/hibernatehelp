@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +26,22 @@ public class User implements Serializable{
 	
 	@Column(name="firstname", length=50)
 	private String firstname;
+	
 	@Column(name="lastname", length=50)
 	private String lastname;
 	
+	@ManyToOne
+	@JoinColumn(name="role_id")
+	private Role role;
+	
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	public long getId() {
 		return id;
 	}
