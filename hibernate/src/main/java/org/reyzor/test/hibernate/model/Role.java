@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,16 +25,16 @@ public class Role implements Serializable{
 	
 	@Column(name="title", length=50)
 	private String title;
-	
-	@OneToOne(mappedBy="role")
-	private User user;
+		
+	@ManyToMany(mappedBy="roles")
+	private Set<User> users = new HashSet<User>();
 
-	public User getUser() {
-		return user;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 	public Role () {
