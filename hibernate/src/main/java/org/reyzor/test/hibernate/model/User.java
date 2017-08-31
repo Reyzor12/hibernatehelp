@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +32,8 @@ public class User implements Serializable{
 	@Column(name="lastname", length=50)
 	private String lastname;
 	
-	@ManyToOne
-	@JoinColumn(name="role_id")
+	@OneToOne
+	@PrimaryKeyJoinColumn
 	private Role role;
 	
 	public Role getRole() {
