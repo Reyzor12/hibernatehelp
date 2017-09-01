@@ -70,7 +70,7 @@ public class Product extends Model{
 	}
 	
 	public String toSrting() {
-		return super.getId() + " - " + title + " - " + description + " - " + productCategory.getTitle();
+		return super.getId() + " - " + title + " - " + description + " - ";
 	}
 	
 }
