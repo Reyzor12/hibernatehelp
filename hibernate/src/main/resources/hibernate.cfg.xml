@@ -11,7 +11,10 @@
 		<property name="hbm2ddl.auto">create</property>
 		
 		<mapping class="org.reyzor.test.hibernate.model.Role"/>
-		<mapping class="org.reyzor.test.hibernate.model.User"/>		
+		<mapping class="org.reyzor.test.hibernate.model.User"/>
+		<mapping class="org.reyzor.test.hibernate.model.Product"/>
+		<mapping class="org.reyzor.test.hibernate.model.ProductCategory"/>
+		<mapping class="org.reyzor.test.hibernate.model.Order"/>		
 		
 	</session-factory>
 </hibernate-configuration>
