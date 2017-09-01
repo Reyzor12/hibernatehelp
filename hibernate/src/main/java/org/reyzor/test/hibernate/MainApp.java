@@ -1,52 +1,38 @@
 package org.reyzor.test.hibernate;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 import org.reyzor.test.hibernate.model.Product;
-import org.reyzor.test.hibernate.model.ProductCategory;
-import org.reyzor.test.hibernate.util.HibernateUtil;
 
 public class MainApp {
 
 	public static void main(String[] args) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();		
-		Session session = sessionFactory.openSession();		
 		
-		List<Product> products = null;
-		int[] ma = {1,2,3};
+		ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
 		
-		try {
-			session.beginTransaction();
-			
-			Criteria criteria = session.createCriteria(Product.class);
-			
-			criteria.add(Restrictions.eq("title", "123"));//select * from product where title = "123"
-			criteria.add(Restrictions.eq("id", ma));//select * from product where title="123" and id in (1,2,3)
-			criteria.add(Restrictions.or(
-					Restrictions.not(
-							Restrictions.in(
-									"id",ma)))));
-			
-			products = criteria.list();
-			
-			session.getTransaction().commit();
-		} catch(Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
-			sessionFactory.close();
-		}	
+		Validator validator = validatorFactory.getValidator();
 		
-		for(Product product: products) {
-			System.out.println(product.toSrting());
+		Product product = new Product();
+		product.setTitle("123");
+		
+		Set<ConstraintViolation<Product>> constrs = validator.validate(product);
+		
+		for(ConstraintViolation<Product> constr:constrs) {
+			
+			StringBuilder stringBuilder = new StringBuilder("property: ");
+			
+			stringBuilder.append(constr.getInvalidValue());
+			stringBuilder.append(" message: ");
+			stringBuilder.append(constr.getMessage());
+			stringBuilder.append(" path: ");
+			stringBuilder.append(constr.getPropertyPath());
+			
+			System.out.println(stringBuilder);
 		}
 		
 	}
