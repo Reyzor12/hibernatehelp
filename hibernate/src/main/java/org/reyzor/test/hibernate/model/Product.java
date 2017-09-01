@@ -68,5 +68,9 @@ public class Product extends Model{
 	public Product(long id) {
 		super(id);
 	}
-
+	
+	public String toSrting() {
+		return super.getId() + " - " + title + " - " + description + " - ";
+	}
+	
 }
